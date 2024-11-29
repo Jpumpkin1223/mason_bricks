@@ -2,6 +2,9 @@ name: clean_architecture_feature
 description: A template for Flutter Clean Architecture feature
 version: 0.1.0
 
+environment:
+  mason: ">=0.1.0 <0.2.0"
+
 vars:
   name:
     type: string
