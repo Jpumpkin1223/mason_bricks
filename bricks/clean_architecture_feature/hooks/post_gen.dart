@@ -3,13 +3,18 @@ import 'package:mason/mason.dart';
 
 void run(HookContext context) async {
   try {
-    final directory = Directory.current;
-    context.logger.info('Post-generation hook running in: ${directory.path}');
+    final targetDirectory = Directory('lib/features/${context.vars['name']}');
+    if (!targetDirectory.existsSync()) {
+      context.logger.err('Target directory does not exist: ${targetDirectory.path}');
+      return;
+    }
 
-    final gitkeepFiles = directory.listSync(recursive: true).where((file) => file.path.endsWith('.gitkeep')).cast<File>();
+    context.logger.info('Post-generation hook running in: ${targetDirectory.path}');
+
+    final gitkeepFiles = targetDirectory.listSync(recursive: true).where((file) => file.path.endsWith('.gitkeep')).cast<File>();
 
     if (gitkeepFiles.isEmpty) {
-      context.logger.info('No .gitkeep files found.');
+      context.logger.info('No .gitkeep files found in ${targetDirectory.path}.');
       return;
     }
 
@@ -28,7 +33,7 @@ void run(HookContext context) async {
       }
     });
 
-    context.logger.success('.gitkeep files removal process completed!');
+    context.logger.success('.gitkeep files removal process completed in ${targetDirectory.path}!');
   } catch (e) {
     context.logger.err('An error occurred during post-generation: $e');
     rethrow;
