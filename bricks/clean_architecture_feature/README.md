@@ -5,6 +5,16 @@ A template for implementing Clean Architecture features in Flutter projects 🎯
 ## Overview ⭐
 This template provides a standardized structure for implementing Clean Architecture pattern in Flutter projects, ensuring clean and maintainable code.
 
+## Usage 📝
+Add the following to your `mason.yaml`:
+```yaml
+bricks:
+  clean_architecture_feature:
+    git:
+      url: https://github.com/Jpumpkin1223/mason_bricks.git
+      path: bricks/clean_architecture_feature
+```
+
 ## Structure 🗂️
 ```
 {{feature_name}}/ 
