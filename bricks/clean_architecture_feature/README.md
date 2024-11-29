@@ -2,7 +2,7 @@
 
 A template for implementing Clean Architecture features in Flutter projects 🎯
 
-## Overview 📝
+## Overview ⭐
 This template provides a standardized structure for implementing Clean Architecture pattern in Flutter projects, ensuring clean and maintainable code.
 
 ## Structure 🗂️
